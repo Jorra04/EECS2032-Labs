@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ $# != 2 ] #if #args != 2
 then 
-    echo usage: $0 dir file #$0 prints out the file name too.
+    echo usage: sh1.sh dir file #$0 prints out the file name too.
 elif [ ! -d "$1" ]
 then 
     echo $1 is not a directory

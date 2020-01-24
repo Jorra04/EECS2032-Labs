@@ -57,20 +57,19 @@ then
 
     done < "names.txt"
     #Now looking through courses to get the courses and grades associated with SN
-    #echo $student_exists
+    
     if [ $student_exists = true ]
     then
     while read line;
     do
+    
     split_course_input=$line
     split_course
 
     if [ $student_number = "${split_course_result[0]}" ]
-    #echo here
     then
         if [ "${#split_course_result[@]}" = 2 ]
         then
-            echo here
             echo "${split_course_result[1]}" in progress
         else
             echo "${split_course_result[1]}" "${split_course_result[2]}"
@@ -113,6 +112,7 @@ while read line;
 
     done < "names.txt"
     #Now looking through courses to get the courses and grades associated with SN
+    
     if [ $student_exists = true ]
     then
     while read line;
@@ -137,13 +137,13 @@ while read line;
 
 fi
 
-if [ "$1" = "-c" ]
+if [ $1 = "-c" ]
 then
     while read line;
     do
     split_course_input=$line
     split_course
-    if [ "$2" = "${split_course_result[1]}" ]
+    if [ $2 = "${split_course_result[1]}" ]
     then
         count=$((count+1))
 
@@ -154,7 +154,7 @@ then
     echo $count
 fi
 
-if [ "$1" = "-list" ]
+if [ $1 = "-list" ]
 
 then
 count=0

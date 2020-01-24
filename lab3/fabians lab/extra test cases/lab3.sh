@@ -66,7 +66,7 @@ then
     split_course
 
     if [ $student_number = "${split_course_result[0]}" ]
-    #echo here
+
     then
         if [ "${#split_course_result[@]}" = 2 ]
         then
@@ -157,15 +157,23 @@ fi
 if [ "$1" = "-list" ]
 
 then
-count=0
+    count=0
     while read line;
     do
-    split_course_input=$line
-    split_course
-    if [ $2 = "${split_course_result[1]}" ] && [ $3 = "${split_course_result[2]}" ]
-    then
-        count=$((count+1))
-    fi
+        split_course_input=$line
+        split_course
+        #echo ${split_course_result[@]}
+        #echo 12345 $2 $3
+        if [ "$2" = ${split_course_result[1]} ] #&& [ "$3" = ${split_course_result[2]} ]
+        then
+            #echo $3
+            #echo ${split_course_result[2]}
+            if [ "$3" = ${split_course_result[2]} ]
+            then
+                #echo got here
+                count=$((count+1))
+            fi
+        fi
 
     done < "courses.txt"
     echo $count

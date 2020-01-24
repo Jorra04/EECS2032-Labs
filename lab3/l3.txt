@@ -42,7 +42,7 @@ then
         if [ $2$3 = "${split_names_result[0]}" ]
         then
             student_number="${split_names_result[1]}"
-            student_exists=true
+            $student_exists=true
         fi
     fi
     if [ "${#split_names_result[@]}" = 3 ]
@@ -50,36 +50,32 @@ then
         if [ $2$3 = "${split_names_result[0]}""${split_names_result[1]}" ]
         then
             student_number="${split_names_result[2]}"
-            student_exists=true
+            $student_exists=true
         fi
     fi
     
 
     done < "names.txt"
     #Now looking through courses to get the courses and grades associated with SN
-    #echo $student_exists
     if [ $student_exists = true ]
     then
-    while read line;
-    do
-    split_course_input=$line
-    split_course
-
-    if [ $student_number = "${split_course_result[0]}" ]
-    #echo here
-    then
-        if [ "${#split_course_result[@]}" = 2 ]
+        while read line;
+        do
+        split_course_input=$line
+        split_course
+        if [ $student_number = "${split_course_result[0]}" ]
         then
-            echo here
-            echo "${split_course_result[1]}" in progress
-        else
-            echo "${split_course_result[1]}" "${split_course_result[2]}"
+            if [ "${#split_course_result[@]}" = 2 ]
+            then
+                echo "${split_course_result[1]}" in progress
+            else
+                echo "${split_course_result[1]}" "${split_course_result[2]}"
 
+            fi
         fi
-    fi
     
     
-    done < "courses.txt"
+        done < "courses.txt"
     else
         echo student doesnt exist
     fi
@@ -98,7 +94,7 @@ while read line;
         if [ $2$3 = "${split_names_result[0]}" ]
         then
             student_number="${split_names_result[1]}"
-            student_exists=true
+            $student_exists=true
         fi
     fi
     if [ "${#split_names_result[@]}" = 3 ]
@@ -106,44 +102,44 @@ while read line;
         if [ $2$3 = "${split_names_result[0]}""${split_names_result[1]}" ]
         then
             student_number="${split_names_result[2]}"
-            student_exists=true
+            $student_exists=true
         fi
     fi
     
 
     done < "names.txt"
     #Now looking through courses to get the courses and grades associated with SN
-    if [ $student_exists = true ]
+    if [ student_exists = true ]
     then
-    while read line;
-    do
-    split_course_input=$line
-    split_course
-    if [ $student_number = "${split_course_result[0]}" ]
-    then
-        if [ "${#split_course_result[@]}" = 3 ]
+        while read line;
+        do
+        split_course_input=$line
+        split_course
+        if [ $student_number = "${split_course_result[0]}" ]
         then
-            echo "${split_course_result[1]}" "${split_course_result[2]}" 
+            if [ "${#split_course_result[@]}" = 3 ]
+            then
+                echo "${split_course_result[1]}" "${split_course_result[2]}" 
+
+            fi
 
         fi
-
-    fi
     
     
-    done < "courses.txt"
+        done < "courses.txt"
     else
         echo student doesnt exist
     fi
 
 fi
 
-if [ "$1" = "-c" ]
+if [ $1 = "-c" ]
 then
     while read line;
     do
     split_course_input=$line
     split_course
-    if [ "$2" = "${split_course_result[1]}" ]
+    if [ $2 = "${split_course_result[1]}" ]
     then
         count=$((count+1))
 
@@ -154,7 +150,7 @@ then
     echo $count
 fi
 
-if [ "$1" = "-list" ]
+if [ $1 = "-list" ]
 
 then
 count=0
@@ -172,4 +168,4 @@ count=0
 fi
 
 #abc def gef
-#arr[0]=abc
+#arr[0]=abc 
