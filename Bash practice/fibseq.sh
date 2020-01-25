@@ -31,7 +31,7 @@ then
 else
 
 fibseq=(0 1)
-for(( i=2; i<=$1; i++ ))
+for(( i=2; i<$1; i++ ))
 do
     a="${fibseq[$i-1]}"
     b="${fibseq[$i-2]}"
