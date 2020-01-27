@@ -152,6 +152,7 @@ fi
 
 if [ "$1" = "-c" ]
 then
+    count=0
     while read line;
     do
     whiteSpaceCourses_input=$line
