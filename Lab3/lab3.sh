@@ -1,4 +1,5 @@
 #!/bin/bash
+#two functions put the text file lines into an array
 whiteSpaceNames () {
    while read -n 1; do 
         space_separated=$(printf "$whiteSpaceNames_input $REPLY")
