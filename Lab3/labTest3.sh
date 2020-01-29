@@ -34,12 +34,19 @@ fi
 
 if [ $1 = "-count" ]
 then
-    while read line;
-    do
-    count=$((count+1))
-    
-    done < $namesFile
-    echo $count
+    if [ -s $namesFile ]
+    then
+        count=0
+        while read line;
+        do
+            [ -z "$line" ] && continue
+            count=$((count+1))
+            
+        done < $namesFile
+        echo $count
+    else
+        echo S0
+    fi
 fi
 
 if [ $1 = "-f" ]
