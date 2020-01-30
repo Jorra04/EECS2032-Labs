@@ -111,7 +111,25 @@ studentExists=false
     fi
 fi
 
+if [ "$1" = "-g" ]
+then
+    if [ $# -eq 3 ] #if the number of args is equal to 3, ie. -g Jorra Singh.
+    then
 
+
+
+
+    elif [ $# -eq 2 ] #if the number of args is 2, ie. -g "Jorra Singh"
+    then
+
+
+
+    else
+
+        echo Incorrect number of arguments.
+
+    fi
+fi
 
 
 
