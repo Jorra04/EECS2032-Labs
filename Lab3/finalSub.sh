@@ -86,9 +86,10 @@ studentExists=false
             if [ "$2" = "${namesArr[0]}" ]
             then
                 storedId="${namesArr[1]}"
-                echo $storedId
+                #echo $storedId
                 while read -a coursesArr
                 do
+                    #echo "$storedId ---> ${coursesArr[0]}"
                     if [ "$storedId" = "${coursesArr[0]}" ] 
                     then
                         studentExists=true
