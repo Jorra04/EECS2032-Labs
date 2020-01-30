@@ -39,16 +39,12 @@ then
                 fi
             done < $namesFile
             echo $((count))
-        
         fi
     else
         echo 0
 
     fi
-fi
-
-
-        
+fi   
 IFS=$'\t'
 if [ $1 = "-f" ]
 then
@@ -66,7 +62,7 @@ studentExists=false
                 #echo $storedId
                 while read -a courseArr
                 do
-                   # echo $course $grade
+                    echo "${courseArr[1]}  ${courseArr[2]}"
                     if [ "$storedId" = "${courseArr[0]}" ]
                     then
                         studentExists=true
@@ -79,7 +75,7 @@ studentExists=false
                         fi
                         
                     fi
-                echo iteration     
+                #echo iteration     
 
                 done < $coursesFile
             fi
@@ -96,9 +92,6 @@ studentExists=false
 
     fi
 fi
-
-
-
 if [ "$1" = "-c" ]
 then
     if [ $# -eq 2 ]
@@ -116,7 +109,6 @@ then
         echo Incorrect number of arguments.
     fi
 fi
-
 if [ "$1" = "-list" ]
 then
     count=0
@@ -132,8 +124,6 @@ then
 
         done < $coursesFile
         echo $count
-
-
     elif [ $# -eq 3 ]
     then
         while read -a courseArr
@@ -143,8 +133,6 @@ then
                 count=$((count+1))
 
             fi
-
-
         done < $coursesFile
         echo $count
 
