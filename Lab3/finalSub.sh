@@ -1,10 +1,8 @@
 #!/bin/bash
 ############## Starting lab 3.
-
 ###############
-
-namesFile="names3.txt"
-coursesFile="courses2.txt"
+namesFile="names.txt"
+coursesFile="courses.txt"
 if [ ! -e $namesFile ] || [ ! -e $coursesFile ]
 then
     echo "One or both files do not existing."
@@ -41,10 +39,11 @@ then
     fi
 fi   
 IFS=$'\t'
+#-f operation implementation.
 if [ $1 = "-f" ]
 then
-studentExists=false
-    if [ $# -eq 3 ]
+    studentExists=false
+    if [ $# -eq 3 ] #if the number of args is 3.
     then
         #echo 3 
         while read -a namesArr
@@ -78,7 +77,7 @@ studentExists=false
         then
             echo "no such student: $2 $3"
         fi
-    elif [ $# -eq 2 ]
+    elif [ $# -eq 2 ] #if the number of args is 2.
     then
         studentExists=false
         while read -a namesArr
@@ -106,33 +105,67 @@ studentExists=false
         done < $namesFile
         if [ $studentExists = false ]
         then
-            echo "no such student: $2 $3"
+            echo "no such student: $2"
         fi
     fi
 fi
-
+#-g operation implementation.
 if [ "$1" = "-g" ]
 then
+    studentExists=false
     if [ $# -eq 3 ] #if the number of args is equal to 3, ie. -g Jorra Singh.
     then
+        while read -a namesArr
+        do
+            if [ "${2// /}${3// /}" = "${namesArr[0]// /}" ]
+            then 
+                storedId=${namesArr[1]}
+                while read -a courseArr
+                do
+                    if [ "${storedId// /}" = "${courseArr[0]// /}" ]
+                    then
+                        studentExists=true
+                        if [ ! -z "${courseArr[2]// /}" ]
+                        then
+                            echo "${courseArr[1]} ${courseArr[2]}"
+                        fi 
+                    fi
+                done < $coursesFile
+            fi
+        done < $namesFile
+        if [ "$studentExists" = "false" ]
+        then
+            echo No such student $2 $3 
 
-
-
-
+        fi
     elif [ $# -eq 2 ] #if the number of args is 2, ie. -g "Jorra Singh"
     then
+        while read -a namesArr
+        do
+            if [ "${2// /}" = "${namesArr[0]// /}" ]
+            then
+                storedId=${namesArr[1]}
+                while read -a courseArr
+                do
+                    if [ "${storedId// /}" = "${courseArr[0]// /}" ]
+                    then
+                        studentExists=true
+                        if [ ! -z "${courseArr[2]// /}" ]
+                        then
+                            echo "${courseArr[1]} ${courseArr[2]}"
+                        fi
+                    fi
+                done < $coursesFile
+            fi
+        done < $namesFile
 
-
-
-    else
-
-        echo Incorrect number of arguments.
-
+        if [ "$studentExists" = "false" ]
+        then
+            echo No such student $2
+        fi
     fi
 fi
-
-
-
+#-c operation implementation.
 if [ "$1" = "-c" ]
 then
     if [ $# -eq 2 ]
@@ -150,6 +183,7 @@ then
         echo Incorrect number of arguments.
     fi
 fi
+#-list operation implementation.
 if [ "$1" = "-list" ]
 then
     count=0
