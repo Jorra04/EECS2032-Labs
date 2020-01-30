@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Aleida Cullinan	35970
 Paige Cheung	94185
 Sandie Marguez	65292
@@ -49,55 +48,4 @@ Aisha Bickerstaff	14658
 Shad Yearsley	71353
 Jonell Bosserman	21384
 Argelia Frasier	96475
-=======
-Aleida Cullinan	61693
-Paige Cheung	18365
-Sandie Marguez	63577
-Floy Randell	68669
-Pei Niswander	71700
-Katheryn Bashir	86603
-Janessa Kinoshita	14931
-Pennie Manry	16208
-Lemuel Keels	89969
-Ute Werth	77111
-Sherika Friend	40690
-Rosalba China	90763
-Marcella Buffkin	66693
-Floretta Kendricks	38874
-Emelia Rummage	87663
-Magen Feltner	59210
-Meggan Middaugh	99702
-Maurine Oler	20292
-Layne Carte	43181
-Hattie Forrester	64284
-Sharla Hanson	20599
-Venus Cutter	20346
-Nakisha Kehrer	64065
-Darwin Goldsmith	61360
-Nidia Mccauley	75396
-Ariane Rennie	53164
-Willodean Mccampbell	18714
-Jessika Wool	28399
-Brandee Garrido	52973
-Stefania Schenk	35940
-Shanda Tulloch	25726
-Nicolette Simone	80132
-Gala Clinkscales	91556
-Sandee Splawn	38871
-Huong Kaczmarek	63828
-Jeanelle Pardon	12003
-Waneta Beatrice	47736
-Clarence Tomson	11805
-Hildred Frei	58596
-Solomon Krout	78119
-Alethia Earp	39622
-Andree Gheen	94043
-Lashawn Laub	47826
-Jutta Guimond	12155
-Belva Durden	84740
-Delisa Arner	23042
-Aisha Bickerstaff	81773
-Shad Yearsley	39089
-Jonell Bosserman	77940
-Argelia Frasier	23288
->>>>>>> 16b55d713e0fea27bc144a820d8cc63dccfb304e
+
