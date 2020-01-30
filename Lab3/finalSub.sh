@@ -58,26 +58,28 @@ studentExists=false
         #echo 3 
         while read -a namesArr
         do
-            echo "${namesArr[0]}"
+            #echo "${namesArr[0]}"
             if [ "$2 $3" = "${namesArr[0]}" ]
             then
-                echo here
-                storedId=$SN
+                #echo here
+                storedId="${namesArr[1]}"
                 #echo $storedId
-                while read ID course grade
+                while read -a courseArr
                 do
                    # echo $course $grade
-                    if [ "$storedId" = "$ID" ]
+                    if [ "$storedId" = "${courseArr[0]}" ]
                     then
                         studentExists=true
-                        if [ -z "$grade" ]
+                        #echo "${courseArr[2]}"
+                        if [ -z "${courseArr[2]}" ]
                         then
-                            echo "$course in progress"
+                            echo "${courseArr[1]}" in progress
                         else
-                            echo $course $grade
+                            echo "${courseArr[1]} ${courseArr[2]}"
                         fi
                         
                     fi
+                echo iteration     
 
                 done < $coursesFile
             fi
@@ -85,7 +87,7 @@ studentExists=false
 
         if [ $studentExists = false ]
         then
-        echo "no such student: $2 $3"
+            echo "no such student: $2 $3"
         fi
 
     elif [ $# -eq 2 ]
