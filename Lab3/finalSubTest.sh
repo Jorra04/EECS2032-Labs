@@ -39,59 +39,60 @@ then
                 fi
             done < $namesFile
             echo $((count))
+        
         fi
     else
         echo 0
 
     fi
-fi   
+fi
+        
 IFS=$'\t'
 if [ $1 = "-f" ]
 then
-studentExists=false
-    if [ $# -eq 3 ]
-    then
-        #echo 3 
-        while read -a namesArr
-        do
-            #echo "${namesArr[0]}"
-            if [ "$2 $3" = "${namesArr[0]}" ]
-            then
-                #echo here
-                storedId="${namesArr[1]}"
-                #echo $storedId
-                while read -a courseArr
-                do
-                    # echo "${courseArr[1]}  ${courseArr[2]}"
-                    if [ "$storedId" = "${courseArr[0]}" ]
-                    then
-                        studentExists=true
-                        #echo "${courseArr[2]}"
-                        if [ -z "${courseArr[2]}" ] || [ "${courseArr[2]}" = " " ]
-                        then
-                            echo "${courseArr[1]} in progress"
-                        else
-                            echo "${courseArr[1]} ${courseArr[2]}"
-                        fi
-                        
-                    fi
-                #echo iteration     
+    student_found=false
+    
+    while read -a namesArr
+    do
+        #this is actually pretty good fam
 
-                done < $coursesFile
-            fi
-        done < $namesFile
-
-        if [ $studentExists = false ]
+        #i added remove spaces 
+        if [ "${2// /}" = "${namesArr[0]// /}" ]
         then
-            echo "no such student: $2 $3"
+            #this is the student number
+            storedId="${namesArr[1]}"
+
+            while read -a courseArr
+            do
+                #check if id matches course id
+                if [ "$storedId" = "${courseArr[0]}" ]
+                then
+                    student_found=true
+
+                    #kinda fucked you should check size but this works
+                    if [ -z "${courseArr[2]}" ]
+                    then
+                        echo "${courseArr[1]}" in progress
+                    else
+                        echo "${courseArr[1]} ${courseArr[2]}"
+                    fi
+                        
+                fi  
+
+            done < $coursesFile
         fi
 
-    elif [ $# -eq 2 ]
-    then
-        echo 2
+    done < $namesFile
 
+    if [ $student_found = "false" ]
+    then 
+        echo no student_found
     fi
+
 fi
+
+
+
 if [ "$1" = "-c" ]
 then
     if [ $# -eq 2 ]
@@ -109,6 +110,7 @@ then
         echo Incorrect number of arguments.
     fi
 fi
+
 if [ "$1" = "-list" ]
 then
     count=0
@@ -124,6 +126,8 @@ then
 
         done < $coursesFile
         echo $count
+
+
     elif [ $# -eq 3 ]
     then
         while read -a courseArr
@@ -133,6 +137,8 @@ then
                 count=$((count+1))
 
             fi
+
+
         done < $coursesFile
         echo $count
 
