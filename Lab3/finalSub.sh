@@ -124,14 +124,29 @@ then
     then
         while read -a courseArr
         do
-            echo $2
+            #echo "$2 --> ${courseArr[1]} ${courseArr[2]}"
+            if [ "$2" = "${courseArr[1]} ${courseArr[2]}" ]
+            then
+                count=$((count+1))
+            fi
 
-        done > $coursesFile
+        done < $coursesFile
+        echo $count
 
 
     elif [ $# -eq 3 ]
     then
-        echo 3family
+        while read -a courseArr
+        do
+            if [ "$2" = "${courseArr[1]}" ] && [ "$3" = "${courseArr[2]}" ]
+            then
+                count=$((count+1))
+
+            fi
+
+
+        done < $coursesFile
+        echo $count
 
     fi
 fi
