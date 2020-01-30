@@ -1,8 +1,8 @@
 #!/bin/bash
 ############## Starting lab 3.
 ###############
-namesFile="names.txt"
-coursesFile="courses.txt"
+namesFile="names2.txt"
+coursesFile="courses2.txt"
 if [ ! -e $namesFile ] || [ ! -e $coursesFile ]
 then
     echo "One or both files do not existing."
@@ -45,22 +45,16 @@ then
     studentExists=false
     if [ $# -eq 3 ] #if the number of args is 3.
     then
-        #echo 3 
         while read -a namesArr
         do
-            #echo "${2// /}${3// /}"
             if [ "${2// /}${3// /}" = "${namesArr[0]// /}" ]
             then
-                #echo here
                 storedId="${namesArr[1]}"
-                #echo $storedId
                 while read -a courseArr
                 do
-                    # echo "${courseArr[1]}  ${courseArr[2]}"
                     if [ "$storedId" = "${courseArr[0]}" ]
                     then
                         studentExists=true
-                        #echo "${courseArr[2]}"
                         if [ -z "${courseArr[2]}" ] || [ "${courseArr[2]}" = " " ]
                         then
                             echo "${courseArr[1]} in progress"
@@ -85,14 +79,11 @@ then
             if [ "${2// /}" = "${namesArr[0]// /}" ]
             then
                 storedId="${namesArr[1]}"
-                #echo $storedId
                 while read -a coursesArr
                 do
-                    #echo "$storedId ---> ${coursesArr[0]}"
                     if [ "$storedId" = "${coursesArr[0]}" ] 
                     then
                         studentExists=true
-                        #echo "${coursesArr[2]}"
                         if [ -z "${coursesArr[2]}" ] || [ "${coursesArr[2]}" = " " ]
                         then
                             echo "${coursesArr[1]} in progress"
