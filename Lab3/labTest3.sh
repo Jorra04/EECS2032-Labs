@@ -32,7 +32,7 @@ fi
 
 
 
-if [ $1 = "-count" ]
+if [ "$1" = "-count" ]
 then
     if [ -s $namesFile ]
     then
@@ -49,7 +49,7 @@ then
     fi
 fi
 
-if [ $1 = "-f" ]
+if [ "$1" = "-f" ]
 then
     if [ $# = 3 ]
     then
@@ -61,7 +61,7 @@ then
             whiteSpaceNames
             if [ "${#whiteSpaceNames_result[@]}" = 2 ]
             then
-                if [ $2$3 = "${whiteSpaceNames_result[0]}" ]
+                if [ "$2$3" = "${whiteSpaceNames_result[0]}" ]
                 then
                     student_number="${whiteSpaceNames_result[1]}"
                     student_exists=true
@@ -69,7 +69,7 @@ then
             fi
             if [ "${#whiteSpaceNames_result[@]}" = 3 ]
             then
-                if [ $2$3 = "${whiteSpaceNames_result[0]}""${whiteSpaceNames_result[1]}" ]
+                if [ "$2$3" = "${whiteSpaceNames_result[0]}""${whiteSpaceNames_result[1]}" ]
                 then
                     student_number="${whiteSpaceNames_result[2]}"
                     student_exists=true
@@ -80,14 +80,14 @@ then
          done < $namesFile
             #Now looking through courses to get the courses and grades associated with SN
             #echo $student_exists
-        if [ $student_exists = true ]
+        if [ "$student_exists" = true ]
         then
             while read line;
             do
                 whiteSpaceCourses_input=$line
                 whiteSpaceCourses
 
-                if [ $student_number = "${whiteSpaceCourses_result[0]}" ]
+                if [ "$student_number" = "${whiteSpaceCourses_result[0]}" ]
 
                 then
                     if [ "${#whiteSpaceCourses_result[@]}" = 2 ]
@@ -113,30 +113,21 @@ then
         foundStudent=0
         #echo 2 arguments.
         IFS=$'\t'
-        while read name id
+        while read line
         do
-            if [ $2 = $name ]
+            echo "${line[1]}"
+            if [ "$2" = "$name" ]
             then
                 foundID=$id
                 foundStudent=$((foundStudent+1))
                 while read id course grade
                 do
-
-                    if [ $foundID = $id ]
-                    then 
-                        if [ -z $grade ]
-                        then
-                            echo $course in progress 
-                        else
-                            echo $course $grade
-                        fi
-                    fi
-
+                    echo here
                 done < $coursesFile
 
             fi
         done < $namesFile
-        if [ $foundStudent = 0 ]
+        if [ "$foundStudent" = 0 ]
         then
             echo no such student: $2
         fi
@@ -145,7 +136,7 @@ then
 
 fi
 
-if [ $1 = "-g" ]
+if [ "$1" = "-g" ]
 then
     if [ $# = 3 ]
     then
@@ -156,7 +147,7 @@ then
             whiteSpaceNames
             if [ "${#whiteSpaceNames_result[@]}" = 2 ]
             then
-                if [ $2$3 = "${whiteSpaceNames_result[0]}" ]
+                if [ "$2$3" = "${whiteSpaceNames_result[0]}" ]
                 then
                     student_number="${whiteSpaceNames_result[1]}"
                     student_exists=true
@@ -164,7 +155,7 @@ then
             fi
             if [ "${#whiteSpaceNames_result[@]}" = 3 ]
             then
-                if [ $2$3 = "${whiteSpaceNames_result[0]}""${whiteSpaceNames_result[1]}" ]
+                if [ "$2$3" = "${whiteSpaceNames_result[0]}""${whiteSpaceNames_result[1]}" ]
                 then
                     student_number="${whiteSpaceNames_result[2]}"
                     student_exists=true
@@ -174,13 +165,13 @@ then
 
         done < $namesFile
         #Now looking through courses to get the courses and grades associated with SN
-        if [ $student_exists = true ]
+        if [ "$student_exists" = true ]
         then
             while read line;
             do
                 whiteSpaceCourses_input=$line
                 whiteSpaceCourses
-                if [ $student_number = "${whiteSpaceCourses_result[0]}" ]
+                if [ "$student_number" = "${whiteSpaceCourses_result[0]}" ]
                 then
                     if [ "${#whiteSpaceCourses_result[@]}" = 3 ]
                     then
@@ -196,10 +187,39 @@ then
             echo student doesnt exist
         fi
 
-
+#quotations.
     elif [ $# = 2 ]
     then
-        echo 2 arguments.
+        foundStudent=0
+        #echo 2 arguments.
+        IFS=$'\t'
+        while read name id
+        do
+            if [ $2 = "$name" ]
+            then
+                foundID=$id
+                foundStudent=$((foundStudent+1))
+                while read id course grade
+                do
+
+                    if [ "$foundID" = "$id" ]
+                    then 
+                        if [ -z $grade ]
+                        then
+                            echo $course in progress 
+                        else
+                            echo $course $grade
+                        fi
+                    fi
+
+                done < $coursesFile
+
+            fi
+        done < $namesFile
+        if [ "$foundStudent" = 0 ]
+        then
+            echo no such student: $2
+        fi
     fi
     
 
