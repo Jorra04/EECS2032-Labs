@@ -3,8 +3,8 @@
 
 ###############
 
-namesFile="names.txt"
-coursesFile="courses.txt"
+namesFile="names3.txt"
+coursesFile="courses2.txt"
 if [ ! -e $namesFile ] || [ ! -e $coursesFile ]
 then
     echo "One or both files do not existing."
@@ -49,8 +49,8 @@ studentExists=false
         #echo 3 
         while read -a namesArr
         do
-            #echo "${namesArr[0]}"
-            if [ "$2 $3" = "${namesArr[0]}" ]
+            #echo "${2// /}${3// /}"
+            if [ "${2// /}${3// /}" = "${namesArr[0]// /}" ]
             then
                 #echo here
                 storedId="${namesArr[1]}"
@@ -83,7 +83,7 @@ studentExists=false
         studentExists=false
         while read -a namesArr
         do
-            if [ "$2" = "${namesArr[0]}" ]
+            if [ "${2// /}" = "${namesArr[0]// /}" ]
             then
                 storedId="${namesArr[1]}"
                 #echo $storedId
@@ -110,6 +110,11 @@ studentExists=false
         fi
     fi
 fi
+
+
+
+
+
 if [ "$1" = "-c" ]
 then
     if [ $# -eq 2 ]
