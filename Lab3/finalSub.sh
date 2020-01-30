@@ -5,15 +5,11 @@
 
 namesFile="names.txt"
 coursesFile="courses.txt"
-
-
 if [ ! -e $namesFile ] || [ ! -e $coursesFile ]
 then
-
     echo "One or both files do not existing."
     exit 1
 fi
-
 if [ "$1" = "-count" ]
 then
     if [ -s $namesFile ]
@@ -42,7 +38,6 @@ then
         fi
     else
         echo 0
-
     fi
 fi   
 IFS=$'\t'
@@ -72,11 +67,9 @@ studentExists=false
                             echo "${courseArr[1]} in progress"
                         else
                             echo "${courseArr[1]} ${courseArr[2]}"
-                        fi
-                        
+                        fi    
                     fi
                 #echo iteration     
-
                 done < $coursesFile
             fi
         done < $namesFile
@@ -85,11 +78,35 @@ studentExists=false
         then
             echo "no such student: $2 $3"
         fi
-
     elif [ $# -eq 2 ]
     then
-        echo 2
-
+        studentExists=false
+        while read -a namesArr
+        do
+            if [ "$2" = "${namesArr[0]}" ]
+            then
+                storedId="${namesArr[1]}"
+                echo $storedId
+                while read -a coursesArr
+                do
+                    if [ "$storedId" = "${coursesArr[0]}" ] 
+                    then
+                        studentExists=true
+                        #echo "${coursesArr[2]}"
+                        if [ -z "${coursesArr[2]}" ] || [ "${coursesArr[2]}" = " " ]
+                        then
+                            echo "${coursesArr[1]} in progress"
+                        else
+                            echo "${coursesArr[1]} ${coursesArr[2]}"
+                        fi
+                    fi
+                done < $coursesFile
+            fi
+        done < $namesFile
+        if [ $studentExists = false ]
+        then
+            echo "no such student: $2 $3"
+        fi
     fi
 fi
 if [ "$1" = "-c" ]
@@ -121,7 +138,6 @@ then
             then
                 count=$((count+1))
             fi
-
         done < $coursesFile
         echo $count
     elif [ $# -eq 3 ]
@@ -131,10 +147,8 @@ then
             if [ "$2" = "${courseArr[1]}" ] && [ "$3" = "${courseArr[2]}" ]
             then
                 count=$((count+1))
-
             fi
         done < $coursesFile
         echo $count
-
     fi
 fi
