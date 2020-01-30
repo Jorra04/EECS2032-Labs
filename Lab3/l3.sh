@@ -37,7 +37,9 @@ then
     else
         echo 0
     fi
+    
 fi   
+exit 1
 IFS=$'\t'
 #-f operation implementation.
 if [ $1 = "-f" ]
