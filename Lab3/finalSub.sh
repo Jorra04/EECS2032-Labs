@@ -96,3 +96,42 @@ studentExists=false
 
     fi
 fi
+
+
+
+if [ "$1" = "-c" ]
+then
+    if [ $# -eq 2 ]
+    then
+        count=0
+        while read -a courseArr
+        do
+            if [ "$2" = "${courseArr[1]}" ]
+            then
+                count=$((count+1)) 
+            fi
+        done < $coursesFile
+        echo $count
+    else
+        echo Incorrect number of arguments.
+    fi
+fi
+
+if [ "$1" = "-list" ]
+then
+    count=0
+    if [ $# -eq 2 ]
+    then
+        while read -a courseArr
+        do
+            echo $2
+
+        done > $coursesFile
+
+
+    elif [ $# -eq 3 ]
+    then
+        echo 3family
+
+    fi
+fi
