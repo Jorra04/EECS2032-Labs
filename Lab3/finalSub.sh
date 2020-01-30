@@ -1,8 +1,8 @@
 #!/bin/bash
 ############## Starting lab 3.
 ###############
-namesFile="names2.txt"
-coursesFile="courses2.txt"
+namesFile="names.txt"
+coursesFile="courses.txt"
 if [ ! -e $namesFile ] || [ ! -e $coursesFile ]
 then
     echo "One or both files do not existing."
