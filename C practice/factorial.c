@@ -12,11 +12,8 @@ int main(){
     }
     else{
         int x = val;
-        int subber;
-        //printf("here");
         for(int i =1; i < val; i++){
-            subber = val -i;
-            x*=subber;
+            x*=i;
         }
         printf("%d! = %d\n",val,x);
         return x;
