@@ -1,9 +1,9 @@
 #include <stdio.h>
-void main(){
-    printf("Enter the Value.");
-    float val = 0;
-    scanf("%f",&val);
-    if(&val < 0){
+int main(){
+    printf("Enter the Value.\n");
+    int val = 0;
+    scanf("%d",&val);
+    if( val < 0){
         printf("No factorial for negative numbers.");
         return -1;
     }
@@ -11,12 +11,14 @@ void main(){
         return 1;
     }
     else{
-        float x = 1;
-        printf("here");
-        for(int i =0; i < val; i++){
-            x*=val;
+        int x = val;
+        int subber;
+        //printf("here");
+        for(int i =1; i < val; i++){
+            subber = val -i;
+            x*=subber;
         }
-        printf(x);
+        printf("%d! = %d\n",val,x);
         return x;
     }
 
