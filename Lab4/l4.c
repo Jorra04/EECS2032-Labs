@@ -3,7 +3,7 @@
 A program for LAB4 of EECS2032Z.
 */
 
-main(){
+void main(){
     float a,b,c,winner=0; //initialize variables. 
     scanf("%f%f%f",&a,&b,&c); //read from console and dereference.
     if( a >= 0 && b >= 0 && c >= 0){ // conditional.

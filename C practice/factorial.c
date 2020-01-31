@@ -1,5 +1,26 @@
 #include <stdio.h>
 int main(){
-    printf("Hello, world\n");
-    return 0;
+    printf("Enter the Value.\n");
+    int val = 0;
+    scanf("%d",&val);
+    if( val < 0){
+        printf("No factorial for negative numbers.");
+        return -1;
+    }
+    else if(val == 1 || val == 0){
+        return 1;
+    }
+    else{
+        int x = val;
+        int subber;
+        //printf("here");
+        for(int i =1; i < val; i++){
+            subber = val -i;
+            x*=subber;
+        }
+        printf("%d! = %d\n",val,x);
+        return x;
+    }
+
+    
 }
