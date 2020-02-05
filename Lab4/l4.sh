@@ -2,7 +2,6 @@
 ####### Code starts....
 
 declare -a myArray
-kickout=-1
 count=0
 while read num
 do
@@ -13,23 +12,20 @@ do
         myArray+=($num)
         count=$((count+1))
     fi
-
 done
-
-
-
 isTrue=false
 diff=1
 for(( i=1; i<(count); i++ ))
  do
-    difChecker="$((${myArray[$i]}-${myArray[$((i-1))]}))"
+    difChecker=$((${myArray[$i]}-${myArray[$((i-1))]}))
     #echo "$difChecker ---> $diff"
-    if [ $diff -eq $difChecker ]
+    if [ $difChecker -eq 1 ]
     then 
         #echo here
         isTrue=true
     else
         isTrue=false
+        break
     fi
  done
 if [ "$isTrue" = "true" ]
