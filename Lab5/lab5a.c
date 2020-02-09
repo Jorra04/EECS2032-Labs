@@ -2,6 +2,9 @@
 #define MAX_SIZE 30
 
 int helper(char s[], int val){
+    if(val == 1){
+        return 1;
+    }
     int count = 1;
 		for(int i =1; i < MAX_SIZE; i++) {
 			if(s[i] == s[i-1] +1) {
@@ -10,10 +13,12 @@ int helper(char s[], int val){
 					return 1;
 				}
 			}
+            else{
+                count = 1;
+            }
 		}
 		return 0;
 }
-
 void main(){
     int foundConsec = 1;
     int inConsec;
@@ -30,8 +35,4 @@ void main(){
     else{
         printf("NO\n");
     }
-
-    
 }
-
-
