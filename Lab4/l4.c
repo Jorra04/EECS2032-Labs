@@ -16,6 +16,7 @@ void main(){
         winner = a+b+c; 
         if(winner < 0){
             printf("Negative Wins\n");
+            
         }
         else{
             printf("Positive Wins\n");
