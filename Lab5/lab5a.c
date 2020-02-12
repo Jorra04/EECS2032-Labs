@@ -6,7 +6,8 @@ int helper(char s[], int val){
         return 1;
     }
     int count = 1;
-		for(int i =1; i < MAX_SIZE; i++) {
+    int i;
+		for(i =1; i < MAX_SIZE; i++) {
 			if(s[i] == s[i-1] +1) {
 				count++;
 				if(count == val) {
