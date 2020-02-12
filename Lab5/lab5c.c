@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-int getEndingIndex(char str[], int n, int i) { 
+int getter(char str[], int n, int i) { 
     i++; 
     while (i < n){ 
-        char curr = str[i]; 
-        char prev = str[i-1]; 
-        if ((curr - prev == 1)){
+        char current = str[i]; 
+        char previous = str[i-1]; 
+        if ((current - previous == 1)){
              i++; 
         } 
         else{
@@ -16,7 +16,7 @@ int getEndingIndex(char str[], int n, int i) {
   
     return i - 1; 
     } 
-    int max(int num1, int num2){
+    int maxOf(int num1, int num2){
         if(num1>= num2){
             return num1;
         }
@@ -28,8 +28,8 @@ int getEndingIndex(char str[], int n, int i) {
   
         int i = 0; 
         while (i < n){ 
-            int end = getEndingIndex(str, n, i); 
-            len = max(end - i + 1, len); 
+            int end = getter(str, n, i); 
+            len = maxOf(end - i + 1, len); 
             i = end + 1; 
         } 
   

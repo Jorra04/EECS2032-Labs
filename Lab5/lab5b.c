@@ -11,13 +11,16 @@ int helper(char s[], int val){
 				count++;
 				if(count == val) {
 					return 1;
+                    goto spot;
 				}
 			}
             else{
                 count=1;
             }
 		}
+        spot:
 		return 0;
+        
 }
 
 void main(){
