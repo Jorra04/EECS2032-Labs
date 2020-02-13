@@ -2,11 +2,11 @@
 squaresChecker(){ #Bash reads line by line, so function has to be defined before it can be called.
     read x
     isHyp=false
-    for((i=0;i<=$x;i++)) #Literally check every value.
+    for((i=1;i<=$x;i++)) #Literally check every value.
     do
-        for((j=0;j<=$x;j++))
+        for((j=1;j<=$x;j++))
         do
-            if [ $(($((i * i)) + $((j * j)))) -eq  $x  ]
+            if [ $(($((i * i)) + $((j * j)))) -eq  $((x*x))  ]
             then
                 echo YES
                 exit 1
