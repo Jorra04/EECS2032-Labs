@@ -1,8 +1,8 @@
 #!/bin/bash
-unsorted=true
+unsorted=true #Checker.
 while [ "$unsorted" = "true" ]
 do
-    read x y z
+    read x y z #reads three inputs in one line.
     if [ $x -lt $y ] && [ $y -lt $z ]
     then
         echo $y
