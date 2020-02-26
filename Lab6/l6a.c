@@ -16,7 +16,6 @@ void main(){
      fgets(subString,sizeof(subString), stdin);
      fgets(regString,sizeof(regString),stdin); //read.
    
-  
     if(length(regString) < length(subString)){ // can't be a substring if the first string is larger than the target string.
         printf("NO!\n");
     }   
@@ -44,4 +43,5 @@ void main(){
         }
         printf("NO\n"); //if none of the above conditions are met, its not a substring.
     }
+    
 }
