@@ -1,13 +1,14 @@
 #!/bin/bash
 ############## Starting lab 3.
 ###############
-namesFile="names.txt"
-coursesFile="courses.txt"
+namesFile="namesTest.txt"
+coursesFile="gradesTest.txt"
 if [ ! -e $namesFile ] || [ ! -e $coursesFile ]
 then
     echo "One or both files do not existing."
     exit 1
 fi
+
 if [ "$1" = "-count" ]
 then
     if [ -s $namesFile ]
@@ -37,14 +38,14 @@ then
     else
         echo 0
     fi
+    exit 1
     
 fi   
-exit 1
+
 IFS=$'\t'
 #-f operation implementation.
 if [ $1 = "-f" ]
 then
-    studentExists=false
     if [ $# -eq 3 ] #if the number of args is 3.
     then
         while read -a namesArr
