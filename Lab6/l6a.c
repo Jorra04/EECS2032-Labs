@@ -34,14 +34,14 @@ void main(){
                 //  printf("%d %d\n",count,length(subString) );
                  if(count == length(subString)){
                     printf("YES\n");
-                    return;
+                    return; //return; ends a void function, similar to java.
                  }
             }
             else{
-                count=0;
+                count=0; // reset both.
                 j = 0;
                 }
         }
-        printf("NO\n");
+        printf("NO\n"); //if none of the above conditions are met, its not a substring.
     }
 }
