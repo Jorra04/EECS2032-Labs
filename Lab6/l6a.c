@@ -17,7 +17,7 @@ void main(){
      fgets(regString,sizeof(regString),stdin); //read.
    
     if(length(regString) < length(subString)){ // can't be a substring if the first string is larger than the target string.
-        printf("NO!\n");
+        printf("NO\n");
     }   
     else{
         int i,j,count;

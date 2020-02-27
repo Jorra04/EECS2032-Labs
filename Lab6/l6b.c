@@ -45,20 +45,23 @@ int finder(char str1 [], char str2[],int a []){
 
         
         while(k >= 0){
-            // printf("%c ---->%c\n",str1[strlen(str1)-k-2],str2[j]);
+            printf("%c ---->%c\n",str1[strlen(str1)-k-2],str2[j]);
             if(str1[strlen(str1)-k-2] == str2[j]){
                 count++;
-                a[index] = count;
-                index++;
+                
             }
             else{
                 count = 0;
                 break;
             }
+            
             k--;
             j++;
            
         }
+        a[index] = count;
+        index++;
+        printf("------------\n");
     }
     // printf("%d\n",maxOfArr(a));
     return maxOfArr(a);
@@ -75,7 +78,7 @@ void main(){
     fgets(secondStr,sizeof(secondStr),stdin);
     int first = finder(firstStr,secondStr,maxFinds);
     int second = finder(secondStr,firstStr,maxFinds2);
-    // printf("%d\n", first);   //shows both to make sure.
-    // printf("%d\n", second);
-    printf("max overlap: %d\n",maxOf(first,second));
+    printf("%d\n", first);   //shows both to make sure.
+    printf("%d\n", second);
+    printf("%d\n",maxOf(first,second));
 }
