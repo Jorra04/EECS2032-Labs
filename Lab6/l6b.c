@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#define MAX_ARR_SIZE 24
+#define MAX_ARR_SIZE 35
 
 int * zeroMaker(int arr []){
     int i;
