@@ -46,7 +46,7 @@ int finder(char str1 [], char str2[],int a []){
 
         
         while(k >= 0){
-            printf("%c ---->%c\n",str1[strlen(str1)-k-2],str2[j]);  //print the matching values.
+            // printf("%c ---->%c\n",str1[strlen(str1)-k-2],str2[j]);  //print the matching values.
             if(str1[strlen(str1)-k-2] == str2[j]){
                 count++;
                 
@@ -61,8 +61,8 @@ int finder(char str1 [], char str2[],int a []){
         }
         a[index] = count; //having this happen outside the loop means that only consecutive counts are added.
         index++;
-        printf("count = %d\n",count);
-        printf("------------\n"); // lets me see where each iteration begins.
+        // printf("count = %d\n",count);
+        // printf("------------\n"); // lets me see where each iteration begins.
         count = 0;
     }
     // printf("%d\n",maxOfArr(a));
@@ -80,8 +80,7 @@ void main(){
     fgets(secondStr,sizeof(secondStr),stdin);
     int first = finder(firstStr,secondStr,maxFinds);
     int second = finder(secondStr,firstStr,maxFinds2);
-    printf("%d\n", first);   //shows both to make sure that the flipped case is taken into account.
-    // printf("--------------\n");
-    printf("%d\n", second);
+    // printf("%d\n", first);   //shows both to make sure that the flipped case is taken into account.
+    // printf("%d\n", second);
     printf("%d\n",maxOf(first,second)); //gets max return of firstStr into secondStr vs secondStr into firstStr.
 }
