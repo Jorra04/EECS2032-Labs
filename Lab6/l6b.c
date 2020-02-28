@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <string.h>
+#define MAX_ARR_SIZE 24
 
 int * zeroMaker(int arr []){
     int i;
-    for(i = 0; i < 24; i ++){
+    for(i = 0; i < MAX_ARR_SIZE; i ++){
         arr[i] = 0;
     }
     return arr;
@@ -11,7 +12,7 @@ int * zeroMaker(int arr []){
 int maxOfArr(int arr []){
     int k;
     int max = arr[0];
-    for(k = 0; k < 24; k ++){
+    for(k = 0; k < MAX_ARR_SIZE; k ++){
         if(arr[k] > max){
             max = arr[k];
         }
@@ -59,7 +60,7 @@ int finder(char str1 [], char str2[],int a []){
             j++;
            
         }
-        a[index] = count;
+        a[index] = count; //having this happen outside the loop means that only consecutive counts are added.
         index++;
         // printf("------------\n"); // lets me see where each iteration begins.
     }
@@ -68,10 +69,10 @@ int finder(char str1 [], char str2[],int a []){
 }
 
 void main(){
-    char firstStr [24];
-    char secondStr [24];
-    int maxFinds [24];
-    int maxFinds2 [24];
+    char firstStr [MAX_ARR_SIZE];
+    char secondStr [MAX_ARR_SIZE];
+    int maxFinds [MAX_ARR_SIZE];
+    int maxFinds2 [MAX_ARR_SIZE];
     zeroMaker(maxFinds2);
     zeroMaker(maxFinds);
     fgets(firstStr,sizeof(firstStr),stdin);
@@ -80,5 +81,5 @@ void main(){
     int second = finder(secondStr,firstStr,maxFinds2);
     // printf("%d\n", first);   //shows both to make sure that the flipped case is taken into account.
     // printf("%d\n", second);
-    printf("%d\n",maxOf(first,second));
+    printf("%d\n",maxOf(first,second)); //gets max return of firstStr into secondStr vs secondStr into firstStr.
 }
