@@ -2,13 +2,6 @@
 #include <string.h>
 #define MAX_ARR_SIZE 35
 
-int * zeroMaker(int arr []){
-    int i;
-    for(i = 0; i < MAX_ARR_SIZE; i ++){
-        arr[i] = 0;
-    }
-    return arr;
-}
 int maxOfArr(int arr []){
     int k;
     int max = arr[0];
@@ -46,9 +39,10 @@ int finder(char str1 [], char str2[],int a []){
 }
 
 void main(){
-    char firstStr [MAX_ARR_SIZE]; char secondStr [MAX_ARR_SIZE]; int maxFinds [MAX_ARR_SIZE]; int maxFinds2 [MAX_ARR_SIZE];
-    zeroMaker(maxFinds2);
-    zeroMaker(maxFinds);
+    char firstStr [MAX_ARR_SIZE]; 
+    char secondStr [MAX_ARR_SIZE]; 
+    int maxFinds [MAX_ARR_SIZE] = {0}; 
+    int maxFinds2 [MAX_ARR_SIZE] = {0};
     fgets(firstStr,sizeof(firstStr),stdin);
     fgets(secondStr,sizeof(secondStr),stdin);
     int first = finder(firstStr,secondStr,maxFinds); // can print these to show both steps.
