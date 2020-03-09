@@ -6,22 +6,41 @@ void main(){
     printf("Enter a name: ");
     char name [20];
     fgets(name,sizeof(name), stdin);
-    int i,j,index = 0;
-    for(i =0; i < strlen(name); i ++ ){ //find location of last space.
+    int i,j,k=0;
+    int count,index = 0;
+    int index1 = 0;
+    for(i = 0; i < strlen(name) -1; i ++ ){
         if(name[i] == ' '){
             index = i;
+            count++;
         }
     }
-
-    for(j = index; j < strlen(name); j ++ ){
-        printf("%c", name[j]);
+    for(i = 0; i < strlen(name) -1; i ++ ){
+        if(name[i] == ' '){
+            index1 = i;
+            break;
+        }
     }
-    printf(","); 
+    // printf("%d",count);
 
-
-
-    for(j = 0; j < index; j ++ ){
-        printf("%c", name[j]);
+    if(count == 2){
+        for(j = index; j < strlen(name) -1; j ++){
+            printf("%c", name[j]);
+            
+        }
+        printf(", %c. \n",name[0]);
+        
     }
+    
+    else{
+        for(j = index; j < strlen(name) -1; j ++){
+            printf("%c", name[j]);
+            
+        }
+        printf(", %c. ",name[0]);
+        printf("%c.\n",name[index1+1]);
+    }
+    
+    
 
 }
