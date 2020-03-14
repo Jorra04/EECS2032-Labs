@@ -13,14 +13,9 @@ void main(){
         }
         j++;
     }
-
-    // printf("%s",input);
-
-
     for(i =0; i < strlen(input); i ++ ){
         if(input[i] != 'a'){
             printf("%c", input[i]);
         }
     }
-    
 }
