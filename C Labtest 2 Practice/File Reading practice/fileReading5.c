@@ -19,7 +19,7 @@ void main(){
     char * readFileName = "read5.txt";
     FILE *reader = fopen(readFileName,"r");
     char * word;
-    word = (char*) calloc(50,sizeof(char)); //word can be max 20 letters.
+    word = (char*) calloc(50,sizeof(char)); //word can be max 50 letters.
     printf("Please enter the word you are looking for: ");
     scanf("%s",word);
     char *line = "";
@@ -28,13 +28,13 @@ void main(){
     char c ;
     if(word){
         if(reader){
-            while(!feof(reader)){
-                fscanf(reader,"%s",line);
-                printf("%s ----> %s\n",line,word);
+            while(fscanf(reader, "%s", line) == 1){
+                // fscanf(reader,"%s",line);
+                // printf("%s ----> %s\n",line,word);
                 if(stringsEqual(line,word)){
                     count++;
                 }  
-                strcpy(line,""); //Reset the value assigned to line
+                // strcpy(line,""); //Reset the value assigned to line
             }
             printf("Number of matches: %d\n",count);
         }
@@ -46,7 +46,4 @@ void main(){
     else{
         printf("Your word cannot be processed\n");
     }
-    
-
-    
 }

@@ -21,13 +21,10 @@ void main(){
         return;
     }
 
-    while(!feof(reader)){
-        c = fgetc(reader);
+    while((c = fgetc(reader)) != EOF){
         if(isUpperCase(c)){
             c+=32;
         }
-        if(c != EOF){
-            fputc(c,writer);
-        }
+        fputc(c,writer);
     }
 }

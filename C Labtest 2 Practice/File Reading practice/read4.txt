@@ -1,4 +1,1 @@
-jorra
-is
-happy.
- 
+jorra is happy that he finished this program.

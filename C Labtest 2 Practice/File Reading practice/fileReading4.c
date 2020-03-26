@@ -15,13 +15,23 @@ void main(){
     int words = 0;
     int spaces = 0;
     int characterCount = 0;
-    char *line;
-    while( !feof(reader)){
-        c = fgetc(reader);
-        if(c == ' ' || c == '\t' || c =='\0' || c == '\n' || c ==EOF){
-            words++;
+    char *line = "";
+    line = (char*) calloc(50,sizeof(char));
+    while((c = fgetc(reader))!=EOF){
+        // printf("character: %c\n",c);
+        if(c == ' '){
+            spaces ++;
+        }
+        else if(c != '\t' && c != '\n' && c != '\0'){
+            characterCount++;
         }
     }
+    rewind(reader); //reloads the filestream
+    while( (fscanf(reader,"%s",line)) == 1 ){
+        words++;
+    }
+
+    
     printf("Words: %d\nSpaces: %d\nCharacters: %d\n",words,spaces,characterCount);
     // fputs("Words \t Spaces \t Characters \n",writer);
     // fprintf(writer,"===================================\n");

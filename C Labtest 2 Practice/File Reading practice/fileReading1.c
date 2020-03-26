@@ -20,10 +20,8 @@ void main(){
         return;
     }
 
-    while(!(feof(fileReader))){
-        c = fgetc(fileReader);
-        // printf()
-        if(!isVowel(c) && c != EOF){
+    while((c = fgetc(fileReader)) != EOF){
+        if(!isVowel(c)){
             fputc(c,fileWriter);
         }
     }

@@ -17,13 +17,11 @@ void main(){
     word = (char*) calloc(15,sizeof(char)); //max words 15 letters
 
     char c;
-
-    while(!feof(reader)){
-        c = fgetc(reader);
-        if(c != ' ' && c!= EOF){
+    while((c = fgetc(reader))!= EOF){
+        if(c != ' '){
             fputc(c,writer);
         }
-        else if(c != EOF){
+        else{
             fputc('\n',writer);
         }
         
