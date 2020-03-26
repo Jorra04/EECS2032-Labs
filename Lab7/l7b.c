@@ -77,7 +77,7 @@ checkSum += (readFile[length(readFile)+1]+256);
 checkSum += (readFile[length(readFile)+1]);
 }
 
-if(numberFinder(finalSum) == checkSum  || numberFinder(finalSum)  -50 == checkSum || numberFinder(finalSum)  +50 == checkSum  ){
+if(numberFinder(finalSum) == checkSum ){
 printf("Valid\n");
 }else{
 printf("Invalid\n");
