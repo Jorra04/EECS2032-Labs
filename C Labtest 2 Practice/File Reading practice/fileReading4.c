@@ -38,6 +38,6 @@ void main(){
     // fprintf(writer, "%d \t %d \t\t %d \n",words,spaces,characterCount);
     
 
-    // fclose(reader);
-    // fclose(writer);
+    fclose(reader);
+    fclose(writer);
 }
