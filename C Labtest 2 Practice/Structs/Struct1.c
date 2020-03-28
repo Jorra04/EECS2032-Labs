@@ -29,6 +29,7 @@ void changeCoor(struct Point *p);
 
 void changeName(struct Point *p);
 
+struct Point changeX(int newVal);
 void main(){
 
     struct Point point2;
@@ -41,11 +42,27 @@ void main(){
     point2.yCoor = 14;
 
 
-    printf("Coordincate name \t Xcoor \t yCoor\n");
+    printf("Coordinate name \t Xcoor \t yCoor\n");
     printf("%s \t\t %d \t %d \n",point.name,point.xCoor,point.yCoor);
     printf("%s \t\t %d \t %d \n",point2.name,point2.xCoor,point2.yCoor);
 
     printf("======================================\n");
+    point = changeX(111); //works in a weird way, it basically reassigns the struct 
+    //to this new value. Wouldnt want to do this.
+    /*
+    While its possible to pass all attributes of a struct to a function, this can 
+    get tedious and nearly impossible to follow with large structures.
+    The best way to manipulate attributes of a structure is to make a pointer to the structure
+    and pass that to the function. That way, the function has access to all of the attributes
+    and can make the necessary changes.
+    */
+    printf("Coordinate name \t Xcoor \t yCoor\n");
+    printf("%s \t\t %d \t %d \n",point.name,point.xCoor,point.yCoor);
+    printf("%s \t\t %d \t %d \n",point2.name,point2.xCoor,point2.yCoor);
+
+    printf("======================================\n");
+
+
     struct Point *pPoint;
     pPoint = &point;
     changeCoor(pPoint);
@@ -96,4 +113,10 @@ void changeCoor(struct Point *p){
 
 void changeName(struct Point *p){
     p->name = "Coordinate 3";
+}
+
+
+struct Point changeX(int newVal){
+    struct Point p;
+    p.xCoor = newVal;
 }
