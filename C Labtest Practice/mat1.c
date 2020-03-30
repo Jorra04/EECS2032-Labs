@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include <stdbool.h>
  
+ char * boolType(bool val){
+     if(val){
+         return "true";
+     }
+     return "false";
+ }
+
+
+
  void main(){
      int rows = 0;
      int cols = 0;
@@ -31,6 +40,8 @@
          for(j = 1; j < cols; j++){
             ass = ass && (mat[i-1][j-1] < mat[i][j] );
             dec = dec && (mat[i-1][j-1] > mat[i][j] );
+            printf("%s\n",boolType(true));
+            printf("%s\n",boolType(dec));
          }
          if(ass){
              printf("A ");
