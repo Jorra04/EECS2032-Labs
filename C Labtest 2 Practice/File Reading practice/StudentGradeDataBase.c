@@ -174,7 +174,7 @@ void main(int argc, char *argv[]){
             fileReader2(readStream, db, 4,argv[2]);
         }
         
-        if(stringsEqual(argv[1], "CAV")){
+        else if(stringsEqual(argv[1], "CAV")){
             if(stringsEqual(argv[2], "T1")){
                 fileReader(readStream,db,1);
             }
@@ -188,6 +188,7 @@ void main(int argc, char *argv[]){
                 printf("No record for this command\n");
             }
         }
+        
         else{
             printf("No record for this command\n");
         }
